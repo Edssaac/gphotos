@@ -23,7 +23,7 @@ const checkAuthenticationStatus = () => {
         switch (data.status) {
             case 'authorized':
                 content.innerHTML = `
-                    <button id="download-media">Listar e Baixar Mídias</button>
+                    <button id="download-media" class="action-button">Listar e Baixar Mídias</button>
                 `;
 
                 document.getElementById('download-media').addEventListener('click', () => {
@@ -34,7 +34,7 @@ const checkAuthenticationStatus = () => {
 
             case 'valid_credentials':
                 content.innerHTML = `
-                    <button id="connect-account">Conectar Conta</button>
+                    <button id="connect-account" class="action-button">Conectar Conta</button>
                 `;
 
                 document.getElementById('connect-account').addEventListener('click', () => {
