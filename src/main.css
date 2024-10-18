@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-main {
+body {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,6 +14,10 @@ main {
 }
 
 #content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
     min-width: 300px;
     min-height: 200px;
     max-height: 80vh;
@@ -35,6 +39,7 @@ main {
     letter-spacing: 1.5px;
     font-size: 15px;
     font-weight: 600;
+    width: 270px;
     transition: all 0.3s ease;
     box-shadow: rgb(201, 46, 70) 0px 10px 0px 0px;
     color: hsl(0, 0%, 100%);
@@ -51,6 +56,27 @@ main {
     box-shadow: rgb(201, 46, 70) 0px 0px 0px 0px;
     transform: translateY(10px);
     transition: 200ms;
+}
+
+#download-media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader {
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    border: 3px solid rgb(255, 255, 255);
+    border-top-color: transparent;
+    animation: rot1 1.2s linear infinite;
+}
+
+@keyframes rot1 {
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 #table-content {

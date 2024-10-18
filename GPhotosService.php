@@ -28,14 +28,20 @@ class GPhotosService
         self::sessionManager();
 
         if (isset($_SESSION['credentials'])) {
-            return 'authorized';
+            try {
+                $photosLibraryClient = new PhotosLibraryClient([
+                    'credentials' => $_SESSION['credentials']
+                ]);
+
+                if ($photosLibraryClient) {
+                    return 'authorized';
+                }
+            } catch (Exception $ex) {
+                return (self::validateCredentials() ? 'valid_credentials' : 'invalid_credentials');
+            }
         }
 
-        if (self::validateCredentials()) {
-            return 'valid_credentials';
-        } else {
-            return 'invalid_credentials';
-        }
+        return (self::validateCredentials() ? 'valid_credentials' : 'invalid_credentials');
     }
 
     private static function validateCredentials(): bool
@@ -183,8 +189,8 @@ class GPhotosService
             $promises = [];
 
             foreach ($batch as $index => $link) {
-                if ($currentDir != $dirPath) {
-                    self::asyncOutput("Inserindo na pasta: <b>{$dirPath}</b>");
+                if ($currentDir != $link['dirPath']) {
+                    self::asyncOutput("Inserindo na pasta: <b>{$link['dirPath']}</b>");
                 }
 
                 self::asyncOutput('Baixando arquivo ' . (($batchIndex * $batchSize) + $index + 1) . " de {$total}: {$link['filename']}</b>");
@@ -198,7 +204,7 @@ class GPhotosService
                     file_put_contents($link['filePath'], $response->getBody());
                 });
 
-                $currentDir = $dirPath;
+                $currentDir = $link['dirPath'];
             }
 
             Promise\Utils::settle($promises)->wait();

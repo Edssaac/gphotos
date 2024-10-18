@@ -1,4 +1,5 @@
 const content = document.getElementById('content');
+const wrapper = document.getElementById('wrapper');
 
 window.addEventListener('load', () => {
     const url = new URL(window.location.href);
@@ -22,7 +23,7 @@ const checkAuthenticationStatus = () => {
     }).then((data) => {
         switch (data.status) {
             case 'authorized':
-                content.innerHTML = `
+                wrapper.innerHTML = `
                     <button id="download-media" class="action-button">Listar e Baixar Mídias</button>
                 `;
 
@@ -33,7 +34,7 @@ const checkAuthenticationStatus = () => {
                 break;
 
             case 'valid_credentials':
-                content.innerHTML = `
+                wrapper.innerHTML = `
                     <button id="connect-account" class="action-button">Conectar Conta</button>
                 `;
 
@@ -44,7 +45,7 @@ const checkAuthenticationStatus = () => {
                 break;
 
             case 'invalid_credentials':
-                content.innerHTML = `
+                wrapper.innerHTML = `
                     <div id="alert-messsage">
                         Arquivo <code>credentials.json</code> não encontrado. Caso ainda não o tenha criado: 
                         <a href="https://developers.google.com/photos/library/guides/get-started">
@@ -85,14 +86,24 @@ const saveCode = (code) => {
 const fetchMedia = () => {
     const eventSource = new EventSource('http://localhost:8080/GPhotosGateway.php?action=fetchMedia');
 
-    content.innerHTML = `
-        <table id="table-content">
-        </table>
-    `;
+    const button = document.getElementById('download-media');
 
-    const table = document.getElementById('table-content');
+    let emptyTable = true;
+
+    button.innerHTML = '<div class="loader"></div>';
 
     eventSource.onmessage = function (event) {
+        if (emptyTable) {
+            content.innerHTML = `
+                <table id="table-content">
+                </table>
+            `;
+           
+            emptyTable = false;
+        }
+
+        let table = document.getElementById('table-content');
+
         if (event.data === 'EOF') {
             eventSource.close();
         } else {
@@ -103,6 +114,6 @@ const fetchMedia = () => {
     };
 
     eventSource.onerror = function (event) {
-        console.error("Erro ao receber mensagens:", event);
+        console.error('Erro ao receber mensagens:', event);
     };
 }
