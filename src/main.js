@@ -45,11 +45,11 @@ const checkAuthenticationStatus = () => {
                 break;
 
             case 'invalid_credentials':
-                wrapper.innerHTML = `
+                content.innerHTML = `
                     <div id="alert-messsage">
-                        Arquivo <code>credentials.json</code> não encontrado. Caso ainda não o tenha criado: 
+                        Arquivo <strong>credentials.json</strong> não encontrado. Caso ainda não o tenha criado: 
                         <a href="https://developers.google.com/photos/library/guides/get-started">
-                            https://developers.google.com/photos/library/guides/get-started
+                            https://developers.google.com/photos/<wbr>library/guides/get-started
                         </a>
                     </div>
                 `;
@@ -68,7 +68,7 @@ const connectAccount = () => {
         } else {
             content.innerHTML = `
                 <div id="alert-messsage">
-                    Não foi possível criar a conexão, verifique se os dados do arquivo <code>credentials.json</code> estão corretos.
+                    Não foi possível criar a conexão, verifique se os dados do arquivo <strong>credentials.json</strong> estão corretos.
                 </div>
             `;
         }

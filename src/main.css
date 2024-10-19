@@ -70,13 +70,27 @@ body {
     border-radius: 50%;
     border: 3px solid rgb(255, 255, 255);
     border-top-color: transparent;
-    animation: rot1 1.2s linear infinite;
+    animation: rotation 1.2s linear infinite;
 }
 
-@keyframes rot1 {
+@keyframes rotation {
     to {
         transform: rotate(360deg);
     }
+}
+
+#alert-messsage {
+    max-width: 320px;
+    padding: 12px;
+    border-radius: 12px;
+    line-height: 20px;
+    color: rgb(255, 255, 255);
+    background: rgb(255, 56, 86);
+    box-shadow: 0px 0px 5px -3px rgb(11, 11, 11);
+}
+
+#alert-messsage a {
+    text-decoration: none;
 }
 
 #table-content {
