@@ -8,7 +8,7 @@ O GPhotos é um projeto que utiliza a API do Google Photos para se conectar à c
 A aplicação oferece uma interface visual, onde o usuário pode autenticar sua conta e conceder permissões necessárias para iniciar o processo de download 
 e organização dos arquivos diretamente em seu dispositivo local.
 
-![demo](https://raw.githubusercontent.com/Edssaac/gphotos/refs/heads/main/src/img/demo.gif)
+![demo](./src/img/demo.gif)
 
 **Objetivo:**
 
@@ -84,7 +84,7 @@ Após concluir as etapas de instalação e configuração mencionadas acima, voc
 1. Como esta é uma aplicação simples, você pode usar o servidor embutido do PHP para servir a aplicação. <br>
 Abra o terminal e execute o seguinte comando na raiz do projeto:
    ```
-   php -S localhost:8080 -t ./public
+   php -S localhost:8080
    ```
    Isso iniciará um servidor local na porta 8080.
 
@@ -102,3 +102,4 @@ Se desejar encerrar o servidor, basta pressionar `ctrl + C` no terminal onde o s
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/edssaac)
 [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:edssaac@gmail.com)
 [![Outlook](https://img.shields.io/badge/Outlook-0078D4?style=for-the-badge&logo=microsoft-outlook&logoColor=white)](mailto:edssaac@outlook.com)
+[![Linkedin](https://img.shields.io/badge/LinkedIn-black.svg?style=for-the-badge&logo=linkedin&color=informational)](https://www.linkedin.com/in/edssaac/)
