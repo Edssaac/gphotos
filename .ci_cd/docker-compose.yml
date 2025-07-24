@@ -1,0 +1,19 @@
+services:
+  php:
+    build:
+      context: .
+      dockerfile: php.dockerfile
+    container_name: php
+    restart: always
+    env_file:
+      - .docker.env
+    volumes:
+      - ../:/var/www/html
+    ports:
+      - 8080:80
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,2 +1,4 @@
+.docker.env
+/vendor
 /media/*
-!/media/.gitkeep 
+!/media/.gitkeep

@@ -98,7 +98,7 @@ const fetchMedia = () => {
                 <table id="table-content">
                 </table>
             `;
-           
+
             emptyTable = false;
         }
 
